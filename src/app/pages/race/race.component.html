@@ -1,0 +1,24 @@
+<h1>Course des {{ category }}</h1>
+<app-race-timer></app-race-timer>
+<div>
+<button (click)="generatePDF()">Télécharger les enregistrements en PDF</button>
+</div>
+<div class="bibInput">
+  <label for="bibNumber">N° Dossard :</label>
+  <input id="bibNumber" [(ngModel)]="bibNumber" type="number" (keyup)="onKeyUp($event)" placeholder="Numéro de dossard">
+</div>
+<div>Classement</div>
+<table>
+  <thead>
+    <tr>
+      <th>Numéro de dossard</th>
+      <th>Temps</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let runner of runners">
+      <td>{{ runner.bibNumber }}</td>
+      <td>{{ runner.time }}</td>
+    </tr>
+  </tbody>
+</table>

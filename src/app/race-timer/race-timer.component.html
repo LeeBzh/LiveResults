@@ -1,0 +1,11 @@
+<div class="timer-container">
+  <h2>Chronomètre</h2>
+  <div class="timer-display">{{ formatTime(elapsedTime) }}</div>
+  <button class="timer-button" (click)="startStopTimer()">
+    {{ isRunning ? 'Pause' : 'Démarrer' }}
+  </button>
+</div>
+<button class="finish-button" (click)="finishTimer()">
+  Remise à zéro du chronomètre
+</button>
+

@@ -1,0 +1,36 @@
+<h3>Nouveau coureur</h3>
+<form [formGroup]="runnerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="bibNumber">N° Dossard :</label>
+    <input id="bibNumber" formControlName="bibNumber" type="number">
+  </div>
+  <div>
+    <label for="lastName">Nom :</label>
+    <input id="lastName" formControlName="lastName" required>
+  </div>
+  <div>
+    <label for="firstName">Prénom :</label>
+    <input id="firstName" formControlName="firstName" required>
+  </div>
+  <div>
+    <label for="category">Catégorie :</label>
+    <select id="category" formControlName="category" required>
+      <option value="" disabled selected>Sélectionnez une catégorie</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="sexe">Sexe :</label>
+    <select id="sexe" formControlName="sexe" required>
+      <option *ngFor="let sexe of sexes" [value]="sexe">{{ sexe }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="club">Club :</label>
+    <select id="club" formControlName="club" required>
+    <option *ngFor="let club of clubs" [value]="club">{{ club }}</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!runnerForm.valid">Ajouter le coureur</button>
+</form>

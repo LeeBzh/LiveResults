@@ -1,0 +1,30 @@
+<div class="race-results">
+  <h1>Classement de la Petite Patate</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Classement</th>
+        <th>N° Dossard</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Catégorie</th>
+        <th>Club</th>
+        <th>Chrono</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      @for (runner of runners; track runner.bibNumber) {
+        <tr>
+        <td>{{ runner.classement }}</td>
+        <td>{{ runner.bibNumber }}</td>
+        <td>{{ runner.lastName }}</td>
+        <td>{{ runner.firstName }}</td>
+        <td>{{ runner.category }}</td>
+        <td>{{ runner.club }}</td>
+        <td>{{runner.time}}</td>
+      </tr>}
+    </tbody>
+  </table>
+</div>
+

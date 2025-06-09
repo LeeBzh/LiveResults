@@ -1,0 +1,11 @@
+<div class="home-container">
+<h1>Bienvenue au Cross "La Petite Patate 2025"</h1>
+<h2>Les courses</h2>
+<ul>
+  @for (category of ageCategories; track category) {
+  <li>
+      <a [routerLink]="['/race', category]" routerLinkActive="active">{{ category }}</a>
+  </li>
+}
+</ul>
+</div>
