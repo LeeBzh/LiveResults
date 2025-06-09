@@ -1,5 +1,12 @@
 <div class="race-results">
   <h1>Classement de la Petite Patate</h1>
+  <div class="category-filter">
+    <label for="category">Filtrer par catégorie :</label>
+    <select id="category" [(ngModel)]="selectedCategory" (change)="filterRunners()">
+      <option value="">Toutes les catégories</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
   <table>
     <thead>
       <tr>
@@ -13,8 +20,7 @@
       </tr>
     </thead>
     <tbody>
-
-      @for (runner of runners; track runner.bibNumber) {
+      @for (runner of filteredRunners; track runner.bibNumber) {
         <tr>
         <td>{{ runner.classement }}</td>
         <td>{{ runner.bibNumber }}</td>
