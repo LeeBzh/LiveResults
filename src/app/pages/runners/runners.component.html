@@ -1,27 +1,32 @@
-<div class="race"></div>
-<h2>Liste des participants</h2>
-<table>
-  <thead>
-    <tr>
-      <th>N° Dossard</th>
-      <th>Nom</th>
-      <th>Prénom</th>
-      <th>Club</th>
-      <th>Categorie</th>
-      <th>Sexe</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (runner of runners; track runner.bibNumber) {
-    <tr>
-      <td>{{ runner.bibNumber }}</td>
-      <td>{{ runner.lastName }}</td>
-      <td>{{ runner.firstName }}</td>
-      <td>{{ runner.club }}</td>
-      <td>{{runner.category}}</td>
-      <td>{{runner.sexe}}</td>
-    </tr>}
-  </tbody>
-</table>
-<a [routerLink]="'/add-runner'">Ajouter un coureur</a>
-
+<button class="add-runner-button" [routerLink]="'/add-runner'">Ajouter un coureur</button>
+<div class="race">
+  <div class="title-container">
+    <h2>Liste des participants</h2>
+  </div>
+  <div class="participants-container">
+    <table>
+      <thead>
+        <tr>
+          <th>N° Dossard</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Club</th>
+          <th>Categorie</th>
+          <th>Sexe</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (runner of runners; track runner.bibNumber) {
+        <tr>
+          <td>{{ runner.bibNumber }}</td>
+          <td>{{ runner.lastName }}</td>
+          <td>{{ runner.firstName }}</td>
+          <td>{{ runner.club }}</td>
+          <td>{{ runner.category }}</td>
+          <td>{{ runner.sexe }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 <div class="race-results">
-  <h1>Classement de la Petite Patate</h1>
+  <h1>Classement</h1>
   <div class="category-filter">
     <label for="category">Filtrer par catégorie :</label>
-    <select id="category" [(ngModel)]="selectedCategory" (change)="filterRunners()">
+    <select id="category" [(ngModel)]="selectedCategory" (change)="sortRunnersByTime()">
       <option value="">Toutes les catégories</option>
       <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
     </select>
@@ -15,6 +15,7 @@
         <th>Nom</th>
         <th>Prénom</th>
         <th>Catégorie</th>
+        <th>Sexe</th>
         <th>Club</th>
         <th>Chrono</th>
       </tr>
@@ -27,8 +28,9 @@
         <td>{{ runner.lastName }}</td>
         <td>{{ runner.firstName }}</td>
         <td>{{ runner.category }}</td>
+        <td>{{ runner.sexe }} </td>
         <td>{{ runner.club }}</td>
-        <td>{{runner.time}}</td>
+        <td>{{ runner.time }}</td>
       </tr>}
     </tbody>
   </table>

@@ -33,16 +33,41 @@ export class RaceResultsComponent {
     });
   }
 
-  filterRunners() {
-    if (this.selectedCategory === '') {
-      this.filteredRunners = [...this.runners];
-    } else {
-      this.filteredRunners = this.runners.filter(runner => runner.category === this.selectedCategory);
-    }
+  sortRunnersByTime() {
+    // D'abord, filtrer les coureurs par catégorie si une catégorie est sélectionnée
+    let runnersToSort = this.selectedCategory === ''
+      ? [...this.runners]
+      : this.runners.filter(runner => runner.category === this.selectedCategory);
+
+    // Trier les coureurs par temps
+    runnersToSort.sort((a, b) => {
+      const timeA = this.convertTimeToSeconds(a.time);
+      const timeB = this.convertTimeToSeconds(b.time);
+      return timeA - timeB;
+    });
+
+    // Mettre à jour le classement pour chaque catégorie
+    const categoryRankings: { [key: string]: number } = {};
+
+    runnersToSort.forEach(runner => {
+      if (runner.category in categoryRankings) {
+        categoryRankings[runner.category] += 1;
+      } else {
+        categoryRankings[runner.category] = 1;
+      }
+      runner.classement = categoryRankings[runner.category];
+    });
+
+    // Mettre à jour le tableau filtré avec les coureurs triés et classés
+    this.filteredRunners = runnersToSort;
   }
 
-  trackByBibNumber(index: number, runner: Runner): number {
-    return runner.bibNumber;
+  convertTimeToSeconds(time: string | undefined): number {
+    if (time === undefined||time ==='00:00:00') {
+      return Infinity;
+    }
+    const [hours, minutes, seconds] = time.split(':').map(Number);
+    return hours * 3600 + minutes * 60 + seconds;
   }
 
 }
